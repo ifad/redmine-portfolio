@@ -18,6 +18,10 @@ a.homepage:hover {
   color: #376BAD !important;
 }
 
+.vex {
+  text-align: left;
+}
+
 .vex-dialog-message {
   font-size: 25px;
   font-weight: bold;
