@@ -1,0 +1,7 @@
+en:
+  redmine_portfolio_settings: "Portfolio settings"
+  enabled: "Enabled"
+  name_attribute: "Project's portfolio name attribute"
+  presence_attribute: "Project's portfolio presence attribute"
+  image_attribute: "Project's image attribute"
+  custom_css: "Portfolio custom css"

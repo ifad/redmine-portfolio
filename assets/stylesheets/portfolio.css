@@ -1,0 +1,66 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lucida Grande', Verdana, sans-serif;
+  font-size: 14px;
+}
+
+a.homepage {
+  color: #000;
+}
+
+a.homepage:hover {
+  color: #376BAD !important;
+}
+
+.vex-dialog-message {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.vex-dialog-input {
+  min-height: 70px;
+}
+
+.vex-dialog-input .image img {
+  width: 64px;
+  height: 64px;
+  display: inline;
+  float: left;
+  margin: 0 15px 15px 0;
+}
+
+#portfolio a {
+  text-decoration: none;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+}
+
+#portfolio .center {
+  width: 960px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: table;
+  height: auto;
+}
+
+#portfolio .center .application {
+  width: 128px;
+  margin: 16px;
+  display: inline-block;
+  text-align: center;
+}
+
+#portfolio .center .application .image{
+  margin-bottom: 10px;
+}
+
+#portfolio .center .application .image img{
+  width: 96px;
+  height: 96px;
+}

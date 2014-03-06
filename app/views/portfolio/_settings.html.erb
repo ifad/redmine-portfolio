@@ -1,0 +1,24 @@
+<fieldset>
+  <legend><%= l(:redmine_portfolio_settings) %></legend>
+  <p>
+    <label for="settings_enabled"><%= l(:enabled) %></label>
+    <%= hidden_field_tag 'settings[enabled]', "false", :id => "settings_enabled_false" %>
+    <%= check_box_tag 'settings[enabled]', "true", Portfolio::Redmine.settings[:enabled] == 'true' %>
+  </p>
+  <p>
+    <label for="settings_presence_attribute"><%= l(:presence_attribute) %></label>
+    <%= select_tag 'settings[presence_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:presence_attribute]) %>
+  </p>
+  <p>
+    <label for="settings_name_attribute"><%= l(:name_attribute) %></label>
+    <%= select_tag 'settings[name_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:name_attribute]) %>
+  </p>
+  <p>
+    <label for="settings_image_attribute"><%= l(:image_attribute) %></label>
+    <%= select_tag 'settings[image_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:image_attribute]) %>
+  </p>
+  <p>
+    <label for="settings_custom_css"><%= l(:custom_css) %></label>
+    <%= text_area_tag 'settings[custom_css]', Portfolio::Redmine.settings[:custom_css], :rows => 10 %>
+  </p>
+</fieldset>

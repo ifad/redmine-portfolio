@@ -1,0 +1,12 @@
+<div class="center" style="width:<%=(@projects.count < 6 ? @projects.count : 6)*160%>px">
+  <% @projects.each do |project| -%>
+    <span class="application">
+      <%= link_to_modal project do %>
+        <div class="image">
+          <img src="<%= project.portfolio_image %>" title="<%= project.portfolio_name %>" />
+        </div>
+      <% end -%>
+      <%= portfolio_link_to_project project, :class => 'homepage' %>
+    </span>
+  <% end -%>
+</div>
