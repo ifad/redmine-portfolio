@@ -6,7 +6,7 @@ This plugin presents a sort of projects in a portfolio page at
 
 ## Install
 
-1. Follow the instructions here: http://www.redmine.org/projects/redmine/wiki/Plugins
+1. Execute "git clone git://github.com/ifad/redmine-portfolio.git portfolio" inside #{RAILS_ROOT}/plugins/
 2. Be sure to run: `bundle install`
 3. Go to Administration > Plugins > Configure
 
