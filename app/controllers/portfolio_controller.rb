@@ -4,6 +4,6 @@ class PortfolioController < ApplicationController
   layout 'portfolio'
 
   def index
-    @projects = Project.where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id)).order(:name)
+    @projects = Project.portfolio
   end
 end

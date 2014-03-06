@@ -3,6 +3,24 @@ module Portfolio
     module Project
       extend ActiveSupport::Concern
 
+      included do
+        has_many :portfolio_name_custom_values,
+          :as => :customized,
+          :class_name => 'CustomValue',
+          :include => :custom_field,
+          :conditions => {
+            :custom_values => {
+              :custom_field_id => Portfolio::Redmine.name_attribute.id
+            }
+          }
+
+        scope :portfolio,
+               select('"projects".*')
+              .eager_load(:portfolio_name_custom_values)
+              .where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
+              .order("CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} THEN custom_values.value ELSE projects.name END")
+      end
+
       def portfolio_image
         if image_field = portfolio_custom_field_for(Portfolio::Redmine.image_attribute.id)
           image_field.value

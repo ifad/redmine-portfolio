@@ -35,6 +35,10 @@ module Portfolio
       settings[:title]
     end
 
+    def enabled?
+      settings[:enabled] == 'true'
+    end
+
     protected
       def custom_field(name)
         CustomField.find_by_name(settings[name.to_sym])

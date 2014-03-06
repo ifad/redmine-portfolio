@@ -3,11 +3,11 @@
   <p>
     <label for="settings_enabled"><%= l(:enabled) %></label>
     <%= hidden_field_tag 'settings[enabled]', "false", :id => "settings_enabled_false" %>
-    <%= check_box_tag 'settings[enabled]', "true", Portfolio::Redmine.settings[:enabled] == 'true' %>
+    <%= check_box_tag 'settings[enabled]', "true", Portfolio::Redmine.enabled? %>
   </p>
   <p>
     <label for="settings_title"><%= l(:title) %></label>
-    <%= text_field_tag 'settings[title]', Portfolio::Redmine.settings[:title] %>
+    <%= text_field_tag 'settings[title]', Portfolio::Redmine.title %>
   </p>
   <p>
     <label for="settings_presence_attribute"><%= l(:presence_attribute) %></label>
@@ -23,6 +23,6 @@
   </p>
   <p>
     <label for="settings_custom_css"><%= l(:custom_css) %></label>
-    <%= text_area_tag 'settings[custom_css]', Portfolio::Redmine.settings[:custom_css], :rows => 10 %>
+    <%= text_area_tag 'settings[custom_css]', Portfolio::Redmine.custom_css, :rows => 10 %>
   </p>
 </fieldset>
