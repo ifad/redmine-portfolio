@@ -76,14 +76,6 @@ a.homepage:hover {
   margin: 15px 0;
 }
 
-#portfolio #center li:first-child {
-  margin-top: 0;
-}
-
-#portfolio #center li:last-child {
-  margin-bottom: 0;
-}
-
 #portfolio ul, #portfolio ul li {
   display: inline-block;
 }
