@@ -6,6 +6,10 @@
     <%= check_box_tag 'settings[enabled]', "true", Portfolio::Redmine.settings[:enabled] == 'true' %>
   </p>
   <p>
+    <label for="settings_title"><%= l(:title) %></label>
+    <%= text_field_tag 'settings[title]', Portfolio::Redmine.settings[:title] %>
+  </p>
+  <p>
     <label for="settings_presence_attribute"><%= l(:presence_attribute) %></label>
     <%= select_tag 'settings[presence_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:presence_attribute]) %>
   </p>

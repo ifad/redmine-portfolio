@@ -1,12 +1,19 @@
-<div class="center" style="width:<%=(@projects.count < 6 ? @projects.count : 6)*160%>px">
-  <% @projects.each do |project| -%>
-    <span class="application">
-      <%= link_to_modal project do %>
-        <div class="image">
-          <img src="<%= project.portfolio_image %>" title="<%= project.portfolio_name %>" />
-        </div>
+<div id="container">
+  <div id="top">
+    <h1><%=Portfolio::Redmine.title%></h1>
+  </div>
+  <div id="center">
+    <ul>
+      <% @projects.each do |project| -%>
+        <li class="application">
+          <%= link_to_modal project do %>
+            <div class="image">
+              <img src="<%= project.portfolio_image %>" title="<%= project.portfolio_name %>" />
+            </div>
+          <% end -%>
+          <%= portfolio_link_to_project project, :class => 'homepage' %>
+        </li>
       <% end -%>
-      <%= portfolio_link_to_project project, :class => 'homepage' %>
-    </span>
-  <% end -%>
+    </ul>
+  </div>
 </div>

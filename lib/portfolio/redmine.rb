@@ -15,7 +15,6 @@ module Portfolio
       end
     end
 
-
     def name_attribute
       custom_field(:name_attribute)
     end
@@ -30,6 +29,10 @@ module Portfolio
 
     def custom_css
       settings[:custom_css]
+    end
+
+    def title
+      settings[:title]
     end
 
     protected

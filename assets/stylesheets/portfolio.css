@@ -5,8 +5,13 @@ html, body {
   font-size: 14px;
 }
 
+img {
+  border: none;
+}
+
 a.homepage {
   color: #000;
+  text-decoration: none;
 }
 
 a.homepage:hover {
@@ -30,37 +35,66 @@ a.homepage:hover {
   margin: 0 15px 15px 0;
 }
 
+#portfolio {
+  text-align: center;
+}
+
 #portfolio a {
-  text-decoration: none;
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
 
-#portfolio .center {
-  width: 960px;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+#portfolio #container {
   display: table;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 
-#portfolio .center .application {
-  width: 128px;
-  margin: 16px;
+#portfolio #center {
+  vertical-align: middle;
+  display: table-row;
+}
+
+#portfolio #top {
+  padding: 50px 0 30px;
+}
+
+#portfolio h1 {
+  font-size: 50px;
+}
+
+#portfolio #center ul {
+  max-width: 960px;
+}
+
+#portfolio #center li {
+  margin: 15px 0;
+}
+
+#portfolio #center li:first-child {
+  margin-top: 0;
+}
+
+#portfolio #center li:last-child {
+  margin-bottom: 0;
+}
+
+#portfolio ul, #portfolio ul li {
   display: inline-block;
+}
+
+#portfolio #center .application {
+  float: left;
+  width: 160px;
   text-align: center;
 }
 
-#portfolio .center .application .image{
+#portfolio #center .application .image{
   margin-bottom: 10px;
 }
 
-#portfolio .center .application .image img{
+#portfolio #center .application .image img{
   width: 96px;
   height: 96px;
 }
