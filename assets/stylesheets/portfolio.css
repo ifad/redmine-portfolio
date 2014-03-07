@@ -72,7 +72,7 @@ a.homepage:hover {
 }
 
 #portfolio #center ul {
-  width: 960px;
+  width: 1120px;
 }
 
 #portfolio #center li {
@@ -134,6 +134,11 @@ a.homepage:hover {
   font-size: 22px;
 }
 
+@media (min-width: 961px) and (max-width: 1200px) {
+  #portfolio #center ul {
+    width: 960px;
+  }
+}
 
 @media (min-width: 801px) and (max-width: 960px) {
   #portfolio #center ul {
