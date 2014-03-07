@@ -22,7 +22,7 @@
 <script language="javascript">
   $(function(){
     <% @projects.each do |p| %>
-      index.add({id: <%= p.id %>, title: '<%= j p.portfolio_name.html_safe %>', body: '<%= p.short_description.html_safe %>'});
+      index.add({id: <%= p.id %>, title: '<%= j p.portfolio_name.html_safe %>', body: '<%= j p.short_description.html_safe %>'});
     <% end %>
   });
 </script>
