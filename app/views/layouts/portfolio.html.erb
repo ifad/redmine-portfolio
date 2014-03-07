@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag 'reset', 'vex', 'vex-theme-plain', 'portfolio', :plugin => 'portfolio' %>
     <%= javascript_include_tag 'jquery-1.11.0.min.js', 'vex.combined.min.js', 'portfolio', :plugin => 'portfolio' %>
     <style>
-      <%= Portfolio::Redmine.custom_css %>
+      <%= Portfolio::Redmine.custom_css.html_safe %>
     </style>
   </head>
   <body id="portfolio">
