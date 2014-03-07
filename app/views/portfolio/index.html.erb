@@ -6,9 +6,9 @@
     <ul>
       <% @projects.each do |project| -%>
         <li class="application">
-          <%= link_to_modal project do %>
+          <%= portfolio_link_to_modal project do %>
             <div class="image">
-              <img src="<%= project.portfolio_image %>" title="<%= project.portfolio_name %>" />
+              <%= portfolio_image_for(project) %>
             </div>
           <% end -%>
           <%= portfolio_link_to_project project, :class => 'homepage' %>

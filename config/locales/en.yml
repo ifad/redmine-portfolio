@@ -2,6 +2,7 @@ en:
   redmine_portfolio_settings: "Portfolio settings"
   title: "Title"
   enabled: "Enabled"
+  public_access: "Public access"
   name_attribute: "Project's portfolio name attribute"
   presence_attribute: "Project's portfolio presence attribute"
   image_attribute: "Project's image attribute"

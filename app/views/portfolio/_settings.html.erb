@@ -6,6 +6,11 @@
     <%= check_box_tag 'settings[enabled]', "true", Portfolio::Redmine.enabled? %>
   </p>
   <p>
+    <label for="settings_public_access"><%= l(:public_access) %></label>
+    <%= hidden_field_tag 'settings[public_access]', "false", :id => "settings_public_access_false" %>
+    <%= check_box_tag 'settings[public_access]', "true", Portfolio::Redmine.public_access? %>
+  </p>
+  <p>
     <label for="settings_title"><%= l(:title) %></label>
     <%= text_field_tag 'settings[title]', Portfolio::Redmine.title %>
   </p>

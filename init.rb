@@ -10,6 +10,7 @@ Redmine::Plugin.register :portfolio do
 
   settings(:partial => 'portfolio/settings', :default => {
     :enabled => true,
+    :public_access => false,
     :title => 'Projects portfolio',
     :name_attribute => 'Portfolio name',
     :presence_attribute => 'In portfolio?',

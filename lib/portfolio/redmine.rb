@@ -39,6 +39,10 @@ module Portfolio
       settings[:enabled] == 'true'
     end
 
+    def public_access?
+      settings[:public_access] == 'true'
+    end
+
     protected
       def custom_field(name)
         CustomField.find_by_name(settings[name.to_sym])
