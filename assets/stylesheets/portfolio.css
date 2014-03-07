@@ -4,6 +4,9 @@ html, body {
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', Verdana, sans-serif;
   font-size: 14px;
 }
+input:focus {
+  outline: none;
+}
 
 img {
   border: none;
@@ -61,7 +64,7 @@ a.homepage:hover {
 }
 
 #portfolio #top {
-  padding: 50px 0 30px;
+  padding: 25px 0 10px;
 }
 
 #portfolio h1 {
@@ -69,7 +72,7 @@ a.homepage:hover {
 }
 
 #portfolio #center ul {
-  max-width: 960px;
+  width: 960px;
 }
 
 #portfolio #center li {
@@ -86,6 +89,30 @@ a.homepage:hover {
   text-align: center;
 }
 
+#portfolio #center .application.active {
+  opacity: 0.7;
+  filter:alpha(opacity=70);
+  -webkit-transition: opacity 0.15s ease;
+  -moz-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+#portfolio #center .application.active:hover {
+  opacity: 1.0;
+  filter:alpha(opacity=100);
+  -webkit-transition: opacity 0.15s ease;
+  -moz-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+#portfolio #center .application.inactive {
+  opacity: 0.2;
+  filter:alpha(opacity=20);
+  -webkit-transition: opacity 0.15s ease;
+  -moz-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
 #portfolio #center .application .image{
   margin-bottom: 10px;
 }
@@ -93,4 +120,35 @@ a.homepage:hover {
 #portfolio #center .application .image img{
   width: 96px;
   height: 96px;
+}
+
+#search {
+  padding: 5px 10px;
+  line-height: 24px;
+  height: 24px;
+  width: 350px;
+  background-repeat: no-repeat;
+  border: solid 2px black;
+  border-radius: 15px;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+
+@media (min-width: 801px) and (max-width: 960px) {
+  #portfolio #center ul {
+    width: 800px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 800px) {
+  #portfolio #center ul {
+    width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  #portfolio #center ul {
+    width: 480px;
+  }
 }

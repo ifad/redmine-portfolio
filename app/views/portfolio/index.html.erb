@@ -1,11 +1,12 @@
 <div id="container">
   <div id="top">
     <h1><%=Portfolio::Redmine.title%></h1>
+    <%= text_field_tag 'search', '', :placeholder => 'Start typing ...', :autocomplete => 'off', :autofocus => 'autofocus' %>
   </div>
   <div id="center">
     <ul>
       <% @projects.each do |project| -%>
-        <li class="application">
+        <li class="application active" id="<%= project.id %>">
           <%= portfolio_link_to_modal project do %>
             <div class="image">
               <%= portfolio_image_for(project) %>
@@ -17,3 +18,11 @@
     </ul>
   </div>
 </div>
+
+<script language="javascript">
+  $(function(){
+    <% @projects.each do |p| %>
+      index.add(<%= "{id: #{p.id}, title: '#{p.portfolio_name}', body: '#{p.short_description}'}".html_safe %>);
+    <% end %>
+  });
+</script>
