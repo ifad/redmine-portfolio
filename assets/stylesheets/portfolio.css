@@ -128,7 +128,7 @@ a.homepage:hover {
   height: 24px;
   width: 350px;
   background-repeat: no-repeat;
-  border: solid 2px black;
+  border: solid 1px lightgray;
   border-radius: 15px;
   margin-top: 10px;
   font-size: 22px;
