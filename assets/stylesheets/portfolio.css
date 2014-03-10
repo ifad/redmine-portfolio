@@ -15,6 +15,7 @@ img {
 a.homepage {
   color: #000;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 a.homepage:hover {
