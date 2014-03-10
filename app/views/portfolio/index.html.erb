@@ -1,28 +1,52 @@
 <div id="container">
+  <%= mobile_info_toggler %>
   <div id="top">
     <h1><%=Portfolio::Redmine.title%></h1>
     <%= text_field_tag 'search', '', :placeholder => 'Search for ...', :autocomplete => 'off', :autofocus => 'autofocus' %>
   </div>
   <div id="center">
-    <ul>
-      <% @projects.each do |project| -%>
-        <li class="application active" id="<%= project.id %>">
-          <%= portfolio_link_to_modal project do %>
-            <div class="image">
-              <%= portfolio_image_for(project) %>
-            </div>
-          <% end -%>
-          <%= portfolio_link_to_project project, :class => 'homepage' %>
-        </li>
-      <% end -%>
-    </ul>
+    <ul id="projects"> </ul>
   </div>
 </div>
 
+<script id="project-template" type="text/mustache">
+  <li class="application active" id="{{id}}">
+    <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
+      <%= image_tag 'info.png', :plugin => 'portfolio' %>
+    </a>
+    <div class="image">
+      <a href="{{url}}" class="homepage" target="blank">
+        <img alt="{{title}}" src="{{image_src}}">
+      </a>
+      <a href="#" class="alt" data-modal="info" data-idx="{{idx}}" title="{{title}}" style="display:none">
+        <%= image_tag 'info.png', :plugin => 'portfolio' %>
+      </a>
+    </div>
+    <a href="{{url}}" class="homepage" target="blank">{{title}}</a>
+  </li>
+</script>
+
 <script language="javascript">
+  var projects = {},
+      template = $('#project-template').text(),
+          list = $('#projects');
+
+  <% @projects.each_with_index do |p, i| %>
+    projects['<%= i %>'] = {
+      id: <%= p.id %>,
+      idx: '<%= i %>',
+      title: '<%= j p.portfolio_name.html_safe %>',
+      description: '<%= j p.short_description.html_safe %>',
+      image: '<%= j portfolio_image_for(p).html_safe %>',
+      image_src: '<%= j portfolio_image_src_for(p).html_safe %>',
+      url: '<%= j p.homepage.html_safe %>'
+    };
+  <% end %>
+
   $(function(){
-    <% @projects.each do |p| %>
-      index.add({id: <%= p.id %>, title: '<%= j p.portfolio_name.html_safe %>', body: '<%= j p.short_description.html_safe %>'});
-    <% end %>
+    $.each(projects, function(i, project){
+      index.add(project);
+      list.append(Mustache.to_html(template, project));
+    });
   });
 </script>

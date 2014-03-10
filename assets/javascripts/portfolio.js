@@ -15,7 +15,7 @@ var debounce = function (fn) {
 
 var index = lunr(function () {
   this.field('title', {boost: 10});
-  this.field('body');
+  this.field('description');
   this.ref('id');
 });
 
@@ -24,24 +24,48 @@ $(function(){
 
   debounce(function(){ $('#search').focus(); });
 
-  $( ".info" ).on('click', function(e) {
-    e.preventDefault();
+  $('#container')
+    .on('click', '[data-modal="info"]', function(e) {
+      e.preventDefault();
 
-    var self = $(this),
-        body = self.clone().html() + self.data('description');
+      var project = projects[$(this).data('idx')],
+          body    = project.image + project.description;
 
-    vex.dialog.open({
-      message: self.data('title'),
-      input: body,
-      buttons: [
-          $.extend({}, vex.dialog.buttons.YES, {text: 'Close'})
-      ]
+      vex.dialog.open({
+        message: project.title,
+        input: body,
+        buttons: [
+            $.extend({}, vex.dialog.buttons.NO, {text: 'Close'}),
+            $.extend({}, vex.dialog.buttons.YES, {text: 'Open app', click: function(){ window.open(project.url, '_blank')}})
+        ]
+      })
+
     })
+    .on('click', '#mobile-info-toggler', function(e){
+      e.preventDefault();
 
-  });
+      var     self = $(this),
+               img = self.find('img'),
+               src = img.attr('src'),
+            active = self.data('active'),
+          inactive = self.data('inactive');
 
-  $('#search')
-    .on('keydown', debounce(function(e) {
+      if(src.indexOf(active) >= 0) {
+        img.attr('src', src.replace(active, inactive));
+
+        $('#projects .image > a[data-modal="info"]').fadeOut(400, function(){
+          $('#projects .image > a.homepage').fadeIn();
+        });
+      } else {
+        img.attr('src', src.replace(inactive, active));
+
+        $('#projects .image > a.homepage').fadeOut(200, function(){
+          $('#projects .image > a[data-modal="info"]').fadeIn();
+        });
+      }
+
+    })
+    .on('keydown', '#search', debounce(function(e) {
       var self = $(this),
           apps = $('.application');
 

@@ -10,8 +10,8 @@
     <meta name="description" content="<%= Redmine::Info.app_name %>" />
     <meta name="keywords" content="issue,bug,tracker,portfolio" />
     <%= favicon %>
-    <%= stylesheet_link_tag 'reset', 'vex', 'vex-theme-plain', 'font-awesome.min.css', 'portfolio', :plugin => 'portfolio' %>
-    <%= javascript_include_tag 'jquery-1.11.0.min.js', 'jquery.html5-placeholder-shim.js', 'lunr.min.js', 'vex.combined.min.js', 'portfolio', :plugin => 'portfolio' %>
+    <%= stylesheet_link_tag 'reset', 'vex', 'vex-theme-plain', 'portfolio', :plugin => 'portfolio' %>
+    <%= javascript_include_tag 'jquery-1.11.0.min.js', 'jquery.html5-placeholder-shim.js', 'mustache', 'lunr.min.js', 'vex.combined.min.js', 'portfolio', :plugin => 'portfolio' %>
     <style>
       <%= Portfolio::Redmine.custom_css.html_safe %>
     </style>
