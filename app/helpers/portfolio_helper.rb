@@ -19,7 +19,7 @@ module PortfolioHelper
   end
 
   def portfolio_plain_description(project)
-    Nokogiri.parse(textilizable(project.short_description, :project => project)).text
+    Nokogiri.parse(textilizable(project.description, :project => project)).text
   end
 
 end
