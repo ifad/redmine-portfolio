@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module PortfolioHelper
 
   def portfolio_image_src_for(project)
@@ -14,6 +16,10 @@ module PortfolioHelper
 
   def mobile_info_toggler
     link_to image_tag('info.png', :plugin => 'portfolio'), "#", :id => 'mobile-info-toggler', :data => { :active => 'info_active.png', :inactive => 'info.png'}
+  end
+
+  def portfolio_plain_description(project)
+    Nokogiri.parse(textilizable(project.short_description, :project => project)).text
   end
 
 end
