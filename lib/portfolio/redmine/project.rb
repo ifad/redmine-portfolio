@@ -18,6 +18,8 @@ module Portfolio
            eager_load(:portfolio_name_custom_values)
           .where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
           .order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND custom_values.value is not null AND custom_values.value != '' THEN custom_values.value ELSE projects.name END) ASC")
+
+        after_save :portfolio_expire_cache
       end
 
       def portfolio_image
@@ -37,6 +39,10 @@ module Portfolio
       protected
         def portfolio_custom_field_for(key)
           custom_values.where(custom_field_id: key).where("value is not null and value != ''").first
+        end
+
+        def portfolio_expire_cache
+          ActionController::Base.new.expire_fragment('portfolio_view')
         end
 
     end
