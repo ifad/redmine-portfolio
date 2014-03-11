@@ -10,10 +10,6 @@ module PortfolioHelper
     end
   end
 
-  def portfolio_image_for(project)
-    image_tag(portfolio_image_src_for(project), :title => project.portfolio_name)
-  end
-
   def portfolio_mobile_info_toggler
     link_to image_tag('info.png', :plugin => 'portfolio'), "#", :id => 'mobile-info-toggler', :data => { :active => 'info_active.png', :inactive => 'info.png'}
   end

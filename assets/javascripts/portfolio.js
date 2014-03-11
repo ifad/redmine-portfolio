@@ -29,7 +29,8 @@ $(function(){
       e.preventDefault();
 
       var project = projects[$(this).data('idx')],
-          body    = project.image + project.description;
+            image = $('<div/>').append($('<img/>', {src: project.image_src, title: project.title})).html(),
+             body = image + project.description;
 
       vex.dialog.open({
         message: project.title,
