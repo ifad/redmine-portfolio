@@ -1,53 +1,55 @@
-<div id="container">
-  <%= portfolio_mobile_info_toggler %>
-  <div id="top">
-    <h1><%=Portfolio::Redmine.title%></h1>
-    <%= text_field_tag 'search', '', :placeholder => 'Search for ...', :autocomplete => 'off', :autofocus => 'autofocus' %>
+<% cache(:portfolio_view) do %>
+  <div id="container">
+    <%= portfolio_mobile_info_toggler %>
+    <div id="top">
+      <h1><%=Portfolio::Redmine.title%></h1>
+      <%= text_field_tag 'search', '', :placeholder => 'Search for ...', :autocomplete => 'off', :autofocus => 'autofocus' %>
+    </div>
+    <div id="center">
+      <ul id="projects"> </ul>
+    </div>
   </div>
-  <div id="center">
-    <ul id="projects"> </ul>
-  </div>
-</div>
 
-<script id="project-template" type="text/mustache">
-  <li class="application active" id="{{id}}">
-    <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
-      <%= image_tag 'info.png', :plugin => 'portfolio' %>
-    </a>
-    <div class="image">
-      <a href="{{url}}" class="homepage" target="blank">
-        <img alt="{{title}}" src="{{image_src}}">
-      </a>
-      <a href="#" class="alt" data-modal="info" data-idx="{{idx}}" title="{{title}}" style="display:none">
+  <script id="project-template" type="text/mustache">
+    <li class="application active" id="{{id}}">
+      <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
         <%= image_tag 'info.png', :plugin => 'portfolio' %>
       </a>
-    </div>
-    <a href="{{url}}" class="homepage" target="blank">{{title}}</a>
-  </li>
-</script>
+      <div class="image">
+        <a href="{{url}}" class="homepage" target="blank">
+          <img alt="{{title}}" src="{{image_src}}">
+        </a>
+        <a href="#" class="alt" data-modal="info" data-idx="{{idx}}" title="{{title}}" style="display:none">
+          <%= image_tag 'info.png', :plugin => 'portfolio' %>
+        </a>
+      </div>
+      <a href="{{url}}" class="homepage" target="blank">{{title}}</a>
+    </li>
+  </script>
 
-<script language="javascript">
-  var projects = {},
-      template = $('#project-template').text(),
-          list = $('#projects');
+  <script language="javascript">
+    var projects = {},
+        template = $('#project-template').text(),
+            list = $('#projects');
 
-  <% @projects.each_with_index do |p, i| %>
-    projects['<%= i %>'] = {
-      id: <%= p.id %>,
-      idx: '<%= i %>',
-      title: '<%= j p.portfolio_name.html_safe %>',
-      plain_description: '<%= j portfolio_plain_description(p).html_safe %>',
-      description: '<%= j textilizable(p.description, :project => p).html_safe %>',
-      image: '<%= j portfolio_image_for(p).html_safe %>',
-      image_src: '<%= j portfolio_image_src_for(p).html_safe %>',
-      url: '<%= j p.homepage.html_safe %>'
-    };
-  <% end %>
+    <% @projects.each_with_index do |p, i| %>
+      projects['<%= i %>'] = {
+        id: <%= p.id %>,
+        idx: '<%= i %>',
+        title: '<%= j p.portfolio_name.html_safe %>',
+        plain_description: '<%= j portfolio_plain_description(p).html_safe %>',
+        description: '<%= j textilizable(p.description, :project => p).html_safe %>',
+        image: '<%= j portfolio_image_for(p).html_safe %>',
+        image_src: '<%= j portfolio_image_src_for(p).html_safe %>',
+        url: '<%= j p.homepage.html_safe %>'
+      };
+    <% end %>
 
-  $(function(){
-    $.each(projects, function(i, project){
-      index.add(project);
-      list.append(Mustache.to_html(template, project));
+    $(function(){
+      $.each(projects, function(i, project){
+        index.add(project);
+        list.append(Mustache.to_html(template, project));
+      });
     });
-  });
-</script>
+  </script>
+<% end %>
