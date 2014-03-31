@@ -200,6 +200,8 @@ a.homepage:hover {
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
 }
 
 @media (max-width: 960px) {
