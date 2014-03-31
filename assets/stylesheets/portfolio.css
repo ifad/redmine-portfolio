@@ -188,6 +188,20 @@ a.homepage:hover {
   font-size: 22px;
 }
 
+#projects.blur{
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+#projects.not-blur{
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
 @media (max-width: 960px) {
   #mobile-info-toggler {
     display: block;

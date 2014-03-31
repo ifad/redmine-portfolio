@@ -28,9 +28,11 @@ $(function(){
     .on('click', '[data-modal="info"]', function(e) {
       e.preventDefault();
 
-      var project = projects[$(this).data('idx')],
-            image = $('<div/>').append($('<img/>', {src: project.image_src, title: project.title})).html(),
-             body = image + project.description;
+      var project  = projects[$(this).data('idx')],
+            image  = $('<div/>').append($('<img/>', {src: project.image_src, title: project.title})).html(),
+             body  = image + project.description;
+
+      $('#projects').removeClass('not-blur').addClass('blur');
 
       vex.dialog.open({
         message: project.title,
@@ -38,7 +40,10 @@ $(function(){
         buttons: [
             $.extend({}, vex.dialog.buttons.NO, {text: 'Close'}),
             $.extend({}, vex.dialog.buttons.YES, {text: 'Open app', click: function(){ window.open(project.url, '_blank')}})
-        ]
+        ],
+        callback: function(data){
+          $('#projects').removeClass('blur').addClass('not-blur');
+        }
       })
 
     })
