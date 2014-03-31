@@ -32,7 +32,7 @@ $(function(){
             image  = $('<div/>').append($('<img/>', {src: project.image_src, title: project.title})).html(),
              body  = image + project.description;
 
-      $('#projects').removeClass('not-blur').addClass('blur');
+      $('#container').removeClass('not-blur').addClass('blur');
 
       vex.dialog.open({
         message: project.title,
@@ -42,7 +42,7 @@ $(function(){
             $.extend({}, vex.dialog.buttons.YES, {text: 'Open app', click: function(){ window.open(project.url, '_blank')}})
         ],
         callback: function(data){
-          $('#projects').removeClass('blur').addClass('not-blur');
+          $('#container').removeClass('blur').addClass('not-blur');
         }
       })
 

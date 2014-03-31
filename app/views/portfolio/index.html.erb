@@ -1,12 +1,12 @@
 <% cache('portfolio_view') do %>
-  <div id="container">
+  <div id="container" class="not-blur">
     <%= portfolio_mobile_info_toggler %>
     <div id="top">
       <h1><%=Portfolio::Redmine.title%></h1>
       <%= text_field_tag 'search', '', :placeholder => 'Search for ...', :autocomplete => 'off', :autofocus => 'autofocus' %>
     </div>
     <div id="center">
-      <ul id="projects" class="not-blur"> </ul>
+      <ul id="projects"> </ul>
     </div>
   </div>
 

@@ -188,7 +188,7 @@ a.homepage:hover {
   font-size: 22px;
 }
 
-#projects.blur{
+.blur{
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
@@ -196,7 +196,7 @@ a.homepage:hover {
   -webkit-filter: blur(3px);
 }
 
-#projects.not-blur{
+.not-blur{
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
