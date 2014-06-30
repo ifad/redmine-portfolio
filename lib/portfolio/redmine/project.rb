@@ -4,18 +4,8 @@ module Portfolio
       extend ActiveSupport::Concern
 
       included do
-        has_many :portfolio_name_custom_values,
-          :as => :customized,
-          :class_name => 'CustomValue',
-          :include => :custom_field,
-          :conditions => {
-            :custom_values => {
-              :custom_field_id => Portfolio::Redmine.name_attribute.id
-            }
-          }
-
         scope :portfolio, lambda {
-          eager_load(:portfolio_name_custom_values).in_portfolio.sorted_by_portfolio_name
+          in_portfolio.sorted_by_portfolio_name
         }
 
         scope :in_portfolio, lambda {
@@ -23,7 +13,13 @@ module Portfolio
         }
 
         scope :sorted_by_portfolio_name, lambda {
-          order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND NULLIF(custom_values.value, '') IS NOT NULL THEN custom_values.value ELSE projects.name END) ASC")
+          joins(%[
+            LEFT OUTER JOIN custom_values portfolio_name
+              ON portfolio_name.custom_field_id = #{Portfolio::Redmine.name_attribute.id}
+             AND portfolio_name.customized_type = 'Project'
+             AND portfolio_name.customized_id   = projects.id
+          ]).
+          order("LOWER(COALESCE(NULLIF(portfolio_name.value, ''), projects.name)) ASC")
         }
 
         after_save :portfolio_expire_cache
