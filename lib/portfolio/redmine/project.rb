@@ -9,11 +9,23 @@ module Portfolio
         }
 
         scope :in_portfolio, lambda {
-          where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
+          joins(%[
+            INNER JOIN custom_values portfolio_presence
+               ON portfolio_presence.custom_field_id = #{Portfolio::Redmine.presence_attribute.id}
+              AND portfolio_presence.customized_type = 'Project'
+              AND portfolio_presence.customized_id   = projects.id
+          ]).
+          where("portfolio_presence.value = '1'")
         }
 
         scope :with_portfolio_image, lambda {
-          where(id: Portfolio::Redmine.image_attribute.custom_values.where("NULLIF(value, '') is not null").select(:customized_id))
+          joins(%[
+            INNER JOIN custom_values portfolio_image
+               ON portfolio_image.custom_field_id = #{Portfolio::Redmine.image_attribute.id}
+              AND portfolio_image.customized_type = 'Project'
+              AND portfolio_image.customized_id   = projects.id
+          ]).
+          where("NULLIF(portfolio_image.value, '') IS NOT NULL")
         }
 
         scope :sorted_by_portfolio_name, lambda {
