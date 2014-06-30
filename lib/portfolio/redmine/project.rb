@@ -23,7 +23,7 @@ module Portfolio
         }
 
         scope :sorted_by_portfolio_name, lambda {
-          order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND custom_values.value is not null AND custom_values.value != '' THEN custom_values.value ELSE projects.name END) ASC")
+          order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND NULLIF(custom_values.value, '') IS NOT NULL THEN custom_values.value ELSE projects.name END) ASC")
         }
 
         after_save :portfolio_expire_cache
