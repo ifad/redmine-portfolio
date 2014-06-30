@@ -45,7 +45,7 @@ module Portfolio
 
       protected
         def portfolio_custom_field_for(key)
-          custom_values.where(custom_field_id: key).where("value is not null and value != ''").first
+          custom_values.where(custom_field_id: key).where("NULLIF(value, '') IS NOT NULL").first
         end
 
         def portfolio_expire_cache
