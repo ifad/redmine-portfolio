@@ -14,10 +14,17 @@ module Portfolio
             }
           }
 
-        scope :portfolio,
-           eager_load(:portfolio_name_custom_values)
-          .where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
-          .order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND custom_values.value is not null AND custom_values.value != '' THEN custom_values.value ELSE projects.name END) ASC")
+        scope :portfolio, lambda {
+          eager_load(:portfolio_name_custom_values).in_portfolio.sorted_by_portfolio_name
+        }
+
+        scope :in_portfolio, lambda {
+          where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
+        }
+
+        scope :sorted_by_portfolio_name, lambda {
+          order("LOWER(CASE WHEN custom_values.custom_field_id = #{Portfolio::Redmine.name_attribute.id} AND custom_values.value is not null AND custom_values.value != '' THEN custom_values.value ELSE projects.name END) ASC")
+        }
 
         after_save :portfolio_expire_cache
       end
