@@ -5,11 +5,15 @@ module Portfolio
 
       included do
         scope :portfolio, lambda {
-          in_portfolio.sorted_by_portfolio_name
+          in_portfolio.with_portfolio_image.sorted_by_portfolio_name
         }
 
         scope :in_portfolio, lambda {
           where(id: Portfolio::Redmine.presence_attribute.custom_values.where(value: '1').select(:customized_id))
+        }
+
+        scope :with_portfolio_image, lambda {
+          where(id: Portfolio::Redmine.image_attribute.custom_values.where("NULLIF(value, '') is not null").select(:customized_id))
         }
 
         scope :sorted_by_portfolio_name, lambda {
