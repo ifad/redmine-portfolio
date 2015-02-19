@@ -8,6 +8,9 @@ module PortfolioHelper
     else
       project.portfolio_image
     end
+
+  rescue ActiveRecord::RecordNotFound
+    ''
   end
 
   def portfolio_mobile_info_toggler
