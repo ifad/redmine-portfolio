@@ -6,4 +6,5 @@ en:
   name_attribute: "Project's portfolio name attribute"
   presence_attribute: "Project's portfolio presence attribute"
   image_attribute: "Project's image attribute"
+  tokens_attribute: "Project's tokens attribute"
   custom_css: "Portfolio custom css"

@@ -27,6 +27,10 @@
     <%= select_tag 'settings[image_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:image_attribute]) %>
   </p>
   <p>
+    <label for="settings_tokens_attribute"><%= l(:tokens_attribute) %></label>
+    <%= select_tag 'settings[tokens_attribute]', options_from_collection_for_select(CustomField.all, :name, :name, Portfolio::Redmine.settings[:tokens_attribute]) %>
+  </p>
+  <p>
     <label for="settings_custom_css"><%= l(:custom_css) %></label>
     <%= text_area_tag 'settings[custom_css]', Portfolio::Redmine.custom_css, :rows => 10 %>
   </p>
