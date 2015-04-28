@@ -15,6 +15,7 @@ var debounce = function (fn) {
 
 var index = lunr(function () {
   this.field('title', {boost: 10});
+  this.field('tokens', {boost: 5});
   this.field('plain_description');
   this.ref('id');
 });

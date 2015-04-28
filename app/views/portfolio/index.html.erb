@@ -38,6 +38,7 @@
         idx: '<%= i %>',
         title: '<%= j p.portfolio_name.html_safe %>',
         plain_description: '<%= j portfolio_plain_description(p).html_safe %>',
+        tokens: '<%= j portfolio_tokens(p).html_safe %>',
         description: '<%= j textilizable(p.description, :project => p).html_safe %>',
         image_src: '<%= j portfolio_image_src_for(p).html_safe %>',
         url: '<%= j p.homepage.html_safe %>'

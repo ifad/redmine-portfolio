@@ -55,6 +55,12 @@ module Portfolio
         end
       end
 
+      def portfolio_tokens
+        if tokens_field = portfolio_custom_field_for(Portfolio::Redmine.tokens_attribute.id)
+          tokens_field.value
+        end
+      end
+
       protected
         def portfolio_custom_field_for(key)
           custom_values.where(custom_field_id: key).where("NULLIF(value, '') IS NOT NULL").first

@@ -21,4 +21,8 @@ module PortfolioHelper
     Nokogiri::HTML(textilizable(project.description, :project => project)).text
   end
 
+  def portfolio_tokens(project)
+    Nokogiri::HTML(textilizable(project.portfolio_tokens, :project => project)).text
+  end
+
 end

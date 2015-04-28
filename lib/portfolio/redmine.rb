@@ -27,6 +27,10 @@ module Portfolio
       custom_field(:image_attribute)
     end
 
+    def tokens_attribute
+      custom_field(:tokens_attribute)
+    end
+
     def custom_css
       settings[:custom_css]
     end
