@@ -43,6 +43,14 @@ a.homepage:hover {
   margin: 0 15px 15px 0;
 }
 
+.vex-dialog-input h1 {
+  margin-top: 20px;
+}
+
+.vex-content {
+  width: 85% !important;
+}
+
 #mobile-info-toggler {
   display: none;
   position: absolute;
@@ -65,6 +73,10 @@ a.homepage:hover {
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
   transition: color 0.1s linear;
+}
+
+#portfolio a.wiki-anchor {
+  display: none;
 }
 
 #portfolio #container {
