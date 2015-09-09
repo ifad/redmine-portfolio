@@ -12,18 +12,21 @@
 
   <script id="project-template" type="text/mustache">
     <li class="application active" id="{{id}}">
-      <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
+      <!--a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
         <%= image_tag 'info.png', :plugin => 'portfolio' %>
-      </a>
-      <div class="image">
-        <a href="{{url}}" class="homepage" target="blank">
-          <img alt="{{title}}" src="{{image_src}}">
-        </a>
-        <a href="#" class="alt" data-modal="info" data-idx="{{idx}}" title="{{title}}" style="display:none">
-          <%= image_tag 'info.png', :plugin => 'portfolio' %>
-        </a>
+      </a-->
+      <div class="container">
+        <div class="swifter">
+          <span class="logo">
+            <img alt="{{title}}" src="{{image_src}}">
+          </span>
+          <span class="menu">
+            <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
+            <a href="{{url}}" target="_blank" class="link">Go!</a>
+          </span>
+        </div>
       </div>
-      <a href="{{url}}" class="homepage" target="blank">{{title}}</a>
+      <a href="{{url}}" class="homepage" target="+blank">{{title}}</a>
     </li>
   </script>
 
@@ -49,6 +52,19 @@
       $.each(projects, function(i, project){
         index.add(project);
         list.append(Mustache.to_html(template, project));
+      });
+
+      $("#projects .logo").swipe({
+        swipeStatus: function(event, phase, direction, distance, duration, fingers) {
+          if (phase=="move" && direction =="right") {
+            $(this).parent().removeClass("open-sidebar");
+            return false;
+          }
+          if (phase=="move" && direction =="left") {
+            $(this).parent().addClass("open-sidebar");
+            return false;
+          }
+        }
       });
     });
   </script>

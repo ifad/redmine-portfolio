@@ -12,13 +12,18 @@ img {
   border: none;
 }
 
-a.homepage {
+.logo a.homepage, .logo .menu {
+  display: inline-block;
+}
+
+.logo a.homepage {
   color: #000;
+  background-color: white;
   text-decoration: none;
   white-space: nowrap;
 }
 
-a.homepage:hover {
+.logo a.homepage:hover {
   color: #376BAD !important;
 }
 
@@ -114,7 +119,20 @@ a.homepage:hover {
   float: left;
   width: 160px;
   text-align: center;
-  position: relative;
+}
+
+#portfolio #center .application .container {
+  width: 96px;
+  margin: auto;
+  overflow: hidden;
+}
+
+#portfolio #center .application .homepage {
+  margin-top: 10px;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }
 
 #portfolio #center .application.active {
@@ -126,6 +144,7 @@ a.homepage:hover {
 }
 
 #portfolio #center .application .info {
+  z-index: 100;
   display: block;
   top: -15px;
   left: 0;
@@ -173,19 +192,68 @@ a.homepage:hover {
   transition: opacity 0.25s ease;
 }
 
-#portfolio #center .application .image{
-  margin-bottom: 10px;
+#portfolio #center .application .menu{
+  height: 90px;
+  width: 48px;
+  float: right;
+  position: relative;
 }
 
-#portfolio #center .application .image .homepage img{
+#portfolio #center .application .menu a {
+  line-height: 50px;
+  height: 50px;
+  display: block;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  right: 0;
+}
+
+#portfolio #center .application .menu a.detail {
+  top: 0;
+  background-color: #dff0d8;
+}
+
+#portfolio #center .application .menu a.link {
+  bottom: 0;
+  background-color: #d9edf7;
+}
+
+#portfolio #center .application .menu hr {
+  margin: 0;
+  border-color: black;
+  border-style: dashed;
+}
+
+#portfolio #center .application .logo{
+  display: inline-block;
+  height: 96px;
+  width:  96px;
+  background-color: white;
+  z-index: 10;
+}
+
+#portfolio #center .application .swifter{
+  overflow: hidden;
+  position: relative;
+  width: 144px;
+  left: 0;
+  top: 0;
+  -webkit-transition:  left 0.2s ;
+  -moz-transition:  left 0.2s ;
+  -ms-transition:  left 0.2s ;
+  -o-transition:  left 0.2s ;
+  transition:  left 0.2s ;
+}
+
+#portfolio #center .application .swifter.open-sidebar {
+  left: -48px;
+}
+
+#portfolio #center .application .logo img{
   width: 96px;
   height: 96px;
-}
-
-#portfolio #center .application .image .alt img{
-  width: 75px;
-  height: 75px;
-  margin-top:21px;
 }
 
 #search {
@@ -215,6 +283,7 @@ a.homepage:hover {
   filter: blur(0px);
   -webkit-filter: blur(0px);
 }
+
 
 @media (max-width: 960px) {
   #mobile-info-toggler {
