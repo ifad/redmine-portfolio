@@ -21,7 +21,7 @@
           <a href="{{url}}" target="_blank" class="link">Go!</a>
         </div>
         <div class="swifter">
-          <span class="logo">
+          <span class="logo" data-url="{{url}}">
             <img alt="{{title}}" src="{{image_src}}">
           </span>
         </div>
@@ -54,18 +54,23 @@
         list.append(Mustache.to_html(template, project));
       });
 
-      $("#projects .logo").swipe({
-        swipeStatus: function(event, phase, direction, distance, duration, fingers) {
-          if (phase=="move" && direction =="right") {
-            $(this).parent().removeClass("open-sidebar");
-            return false;
+      $("#projects .logo")
+        .on("click", function(e){
+          window.open($(this).data('url'), '_blank');
+        })
+        .swipe({
+          swipeStatus: function(event, phase, direction, distance, duration, fingers) {
+            if (phase=="move" && direction =="right") {
+              $(this).parent().removeClass("open-sidebar");
+              return false;
+            }
+            if (phase=="move" && direction =="left") {
+              $(".swifter").removeClass("open-sidebar");
+              $(this).parent().addClass("open-sidebar");
+              return false;
+            }
           }
-          if (phase=="move" && direction =="left") {
-            $(this).parent().addClass("open-sidebar");
-            return false;
-          }
-        }
-      });
+        });
     });
   </script>
 <% end %>
