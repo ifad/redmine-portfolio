@@ -243,22 +243,51 @@ img {
   z-index: 10;
 }
 
+@-webkit-keyframes slideInSmooth {
+  0% {
+    -webkit-transform: translate3d(-72px,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(-24px,0,0);
+  }
+}
+
+@-webkit-keyframes slideOutSmooth {
+  0% {
+    -webkit-transform: translate3d(-24px,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(-72px,0,0);
+  }
+}
+
 #portfolio #center .application .swifter{
   overflow: hidden;
   position: relative;
   width: 144px;
   height: 96px;
-  left: -24px;
+  left: 0;
   top: 0;
-  -webkit-transition:  left 0.2s ;
-  -moz-transition:  left 0.2s ;
-  -ms-transition:  left 0.2s ;
-  -o-transition:  left 0.2s ;
-  transition:  left 0.2s ;
 }
 
 #portfolio #center .application .swifter.open-sidebar {
-  left: -72px;
+  -webkit-animation: slideOutSmooth ease-in 1;
+  animation: slideOutSmooth ease-in 1;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+}
+
+#portfolio #center .application .swifter.close-sidebar {
+  -webkit-animation: slideInSmooth ease-in 1;
+  animation: slideInSmooth ease-in 1;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
 }
 
 #portfolio #center .application .logo img{

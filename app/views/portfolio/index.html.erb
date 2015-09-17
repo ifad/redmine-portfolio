@@ -20,7 +20,7 @@
           <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
           <a href="{{url}}" target="_blank" class="link">Go!</a>
         </div>
-        <div class="swifter">
+        <div class="swifter close-sidebar">
           <span class="logo" data-url="{{url}}">
             <img alt="{{title}}" src="{{image_src}}">
           </span>
@@ -62,11 +62,12 @@
           swipeStatus: function(event, phase, direction, distance, duration, fingers) {
             if (phase=="move" && direction =="right") {
               $(this).parent().removeClass("open-sidebar");
+              $(this).parent().addClass("close-sidebar");
               return false;
             }
             if (phase=="move" && direction =="left") {
-              $(".swifter").removeClass("open-sidebar");
-              $(this).parent().addClass("open-sidebar");
+              $(".swifter").removeClass("open-sidebar").addClass("close-sidebar");
+              $(this).parent().removeClass("close-sidebar").addClass("open-sidebar");
               return false;
             }
           }
