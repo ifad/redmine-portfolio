@@ -4,7 +4,7 @@ module PortfolioHelper
 
   def portfolio_image_src_for(project)
     if project.portfolio_image =~ /\/attachments\/download\/(\d+)\/.+\.(\w+)$/i
-      "data:image/#{$2};base64," + Base64.encode64(File.read(Attachment.find($1).diskfile))
+      "data:image/#{$2};base64," + Base64.encode64((File.read(Attachment.find($1).diskfile) rescue ''))
     else
       project.portfolio_image
     end
