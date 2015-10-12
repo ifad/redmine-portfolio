@@ -218,7 +218,7 @@ img {
   height: 90px;
   width: 48px;
   position: absolute;
-  right: 0;
+  right: 1px;
   top: 0;
   display: block;
   z-index: 0;
