@@ -2,7 +2,7 @@ Redmine::Plugin.register :portfolio do
   name 'Redmine portfolio'
   author 'Lleir Borras Metje'
   description 'This plugin presents a sort of projects in a portfolio page'
-  version '0.6.0'
+  version '0.6.1'
   url 'http://github.com/ifad/redmine-portfolio'
   author_url 'http://github.com/lleirborras'
 
