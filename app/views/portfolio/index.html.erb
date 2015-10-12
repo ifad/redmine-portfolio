@@ -12,10 +12,10 @@
 
   <script id="project-template" type="text/mustache">
     <li class="application active" id="{{id}}">
-      <!--a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
-        <%= image_tag 'info.png', :plugin => 'portfolio' %>
-      </a-->
       <div class="container">
+        <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
+          <%= image_tag 'info.png', :plugin => 'portfolio' %>
+        </a>
         <div class="menu">
           <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
           <a href="{{url}}" target="_blank" class="link">Go!</a>

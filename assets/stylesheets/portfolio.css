@@ -1,3 +1,21 @@
+@-webkit-keyframes slideInSmooth {
+  0% {
+    -webkit-transform: translate3d(-72px,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(-24px,0,0);
+  }
+}
+
+@-webkit-keyframes slideOutSmooth {
+  0% {
+    -webkit-transform: translate3d(-24px,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(-72px,0,0);
+  }
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -92,8 +110,8 @@ img {
 }
 
 #portfolio #center {
-  vertical-align: middle;
-  display: table-row;
+  padding: 0px 5%;
+  display: block;
 }
 
 #portfolio #top {
@@ -105,21 +123,19 @@ img {
 }
 
 #portfolio #center ul {
-  width: 1120px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
 }
 
 #portfolio #center li {
   margin: 15px 0;
 }
 
-#portfolio ul, #portfolio ul li {
-  display: inline-block;
-}
-
 #portfolio #center .application {
-  float: left;
+  display: inline-block;
   width: 175px;
-  text-align: center;
 }
 
 #portfolio #center .application .container {
@@ -152,7 +168,7 @@ img {
 #portfolio #center .application .info {
   z-index: 100;
   display: block;
-  top: -15px;
+  top: 0;
   left: 0;
   color: #39B3D7;
   position: absolute;
@@ -243,23 +259,6 @@ img {
   z-index: 10;
 }
 
-@-webkit-keyframes slideInSmooth {
-  0% {
-    -webkit-transform: translate3d(-72px,0,0);
-  }
-  100% {
-    -webkit-transform: translate3d(-24px,0,0);
-  }
-}
-
-@-webkit-keyframes slideOutSmooth {
-  0% {
-    -webkit-transform: translate3d(-24px,0,0);
-  }
-  100% {
-    -webkit-transform: translate3d(-72px,0,0);
-  }
-}
 
 #portfolio #center .application .swifter{
   overflow: hidden;
@@ -323,37 +322,8 @@ img {
   -webkit-filter: blur(0px);
 }
 
-
 @media (max-width: 960px) {
-  #mobile-info-toggler {
-    display: block;
-  }
-
-  #portfolio #center .application .info {
-    display: none !important;
-  }
-}
-
-@media (min-width: 961px) and (max-width: 1200px) {
-  #portfolio #center ul {
-    width: 960px;
-  }
-}
-
-@media (min-width: 801px) and (max-width: 960px) {
-  #portfolio #center ul {
-    width: 800px;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 800px) {
-  #portfolio #center ul {
-    width: 640px;
-  }
-}
-
-@media (max-width: 640px) {
-  #portfolio #center ul {
-    width: 480px;
+  #portfolio #center {
+    padding: 0 2%;
   }
 }
