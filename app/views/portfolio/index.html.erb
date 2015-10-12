@@ -1,3 +1,42 @@
+<% if !browser.mobile? && !browser.tablet? -%>
+  <% cache('portfolio_desktop_view') do %>
+    <script id="project-template" type="text/mustache">
+      <li class="application active" id="{{id}}">
+        <div class="container">
+          <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
+            <%= image_tag 'info.png', :plugin => 'portfolio' %>
+          </a>
+          <span class="logo" data-url="{{url}}">
+            <img alt="{{title}}" src="{{image_src}}">
+          </span>
+        </div>
+        <a href="{{url}}" class="homepage" target="+blank">{{title}}</a>
+      </li>
+    </script>
+  <% end %>
+<% end %>
+
+<% if browser.mobile? || browser.tablet? -%>
+  <% cache('portfolio_mobile_view') do %>
+    <script id="project-template" type="text/mustache">
+      <li class="application active" id="{{id}}">
+        <div class="container">
+          <div class="menu">
+            <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
+            <a href="{{url}}" target="_blank" class="link">Go!</a>
+          </div>
+          <div class="swifter open-sidebar">
+            <span class="logo" data-url="{{url}}">
+              <img alt="{{title}}" src="{{image_src}}">
+            </span>
+          </div>
+        </div>
+        <a href="{{url}}" class="homepage" target="+blank">{{title}}</a>
+      </li>
+    </script>
+  <% end %>
+<% end -%>
+
 <% cache('portfolio_view') do %>
   <div id="container" class="not-blur">
     <%= portfolio_mobile_info_toggler %>
@@ -9,33 +48,6 @@
       <ul id="projects"> </ul>
     </div>
   </div>
-
-  <script id="project-template" type="text/mustache">
-    <li class="application active" id="{{id}}">
-      <div class="container">
-        <% if !browser.mobile? && !browser.tablet? -%>
-          <a href="#" class="info" data-idx="{{idx}}" data-modal="info" title="{{title}}">
-            <%= image_tag 'info.png', :plugin => 'portfolio' %>
-          </a>
-          <span class="logo" data-url="{{url}}">
-            <img alt="{{title}}" src="{{image_src}}">
-          </span>
-        <% end -%>
-        <% if browser.mobile? || browser.tablet? -%>
-          <div class="menu">
-            <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
-            <a href="{{url}}" target="_blank" class="link">Go!</a>
-          </div>
-          <div class="swifter open-sidebar">
-            <span class="logo" data-url="{{url}}">
-              <img alt="{{title}}" src="{{image_src}}">
-            </span>
-          </div>
-        <% end -%>
-      </div>
-      <a href="{{url}}" class="homepage" target="+blank">{{title}}</a>
-    </li>
-  </script>
 
   <script language="javascript">
     var projects = {},
