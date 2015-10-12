@@ -20,7 +20,8 @@
           <span class="logo" data-url="{{url}}">
             <img alt="{{title}}" src="{{image_src}}">
           </span>
-        <% else -%>
+        <% end -%>
+        <% if browser.mobile? || browser.tablet? -%>
           <div class="menu">
             <a href="#" class="detail" data-idx="{{idx}}" data-modal="info" title="{{title}}">Info</a>
             <a href="{{url}}" target="_blank" class="link">Go!</a>
