@@ -18,5 +18,6 @@
   </head>
   <body id="portfolio">
     <%= yield %>
+    <%= Portfolio::Redmine.custom_code.html_safe %>
   </body>
 </html>

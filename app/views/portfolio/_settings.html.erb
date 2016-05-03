@@ -34,4 +34,8 @@
     <label for="settings_custom_css"><%= l(:custom_css) %></label>
     <%= text_area_tag 'settings[custom_css]', Portfolio::Redmine.custom_css, :rows => 10 %>
   </p>
+  <p>
+    <label for="settings_custom_code"><%= l(:custom_code) %></label>
+    <%= text_area_tag 'settings[custom_code]', Portfolio::Redmine.custom_code, :rows => 10 %>
+  </p>
 </fieldset>
