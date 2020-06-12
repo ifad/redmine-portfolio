@@ -18,7 +18,7 @@ Redmine::Plugin.register :portfolio do
   })
 end
 
-ActionDispatch::Callbacks.to_prepare do
+ActiveSupport::Reloader.to_prepare do
   require 'project'
 
   Project.send(:include, Portfolio::Redmine::Project)

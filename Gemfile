@@ -1,2 +1,1 @@
-gem 'nokogiri'
 gem 'browser'
