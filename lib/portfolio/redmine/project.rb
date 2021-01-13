@@ -67,7 +67,11 @@ module Portfolio
         end
 
         def portfolio_expire_cache
-          %w( portfolio_desktop_view portfolio_mobile_view ).each do |fragment|
+          self.cache.portfolio_expire_cache
+        end
+
+        def self.portfolio_expire_cache
+          %w( portfolio_desktop_view portfolio_mobile_view portfolio_view ).each do |fragment|
             ActionController::Base.new.expire_fragment(fragment)
           end
         end
